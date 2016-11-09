@@ -9,18 +9,22 @@ exports.register = function (server, options, next) {
     const payload = response.response._payload._data;
     const path = response.path;
 
-    const regex = /<[img|script|link][\w=\s\-\/"]+[href|src]="([\w\.\-_\/\?:]+)"[\w=\s\-\/"]*>/ig;
-    const foundLinks = [];
+    const regex = /<(img|script|link)[\w=\s\-\/\+"]+(?:data-img|href|src)="([\w\.\-_\/\?:]+)"[\w=\s\-\/"]*>/ig;
+    const foundLinks = {};
     let matches = null;
     while ((matches = regex.exec(payload)) !== null) {
-      const ref = matches[1];
+      const type = matches[1];
+      const ref = matches[2];
 
       if (ref.indexOf('http://') === 0) {
-        foundLinks.push(ref);
+        if (!foundLinks[type]) {
+          foundLinks[type] = [];
+        }
+        foundLinks[type].push(ref);
       }
     }
 
-    if ( foundLinks.length > 0 ) {
+    if ( Object.getOwnPropertyNames(foundLinks).length ) {
       server.log(['info', 'secure-check'], { path, foundLinks});
     }
   });
