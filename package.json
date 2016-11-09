@@ -1,0 +1,27 @@
+{
+  "name": "hapi-secure-checker",
+  "version": "0.0.1",
+  "description": "Hapi plugin that will parse outgoing html and log if it's http.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hapi",
+    "secure"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/hapi-secure-checker.git"
+  },
+  "author": "Eric Willis <code@firstandthird.com> (http://firstandthird.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/hapi-secure-checker/issues"
+  },
+  "homepage": "https://github.com/firstandthird/hapi-secure-checker#readme",
+  "devDependencies": {
+    "hapi": "^15.2.0",
+    "vision": "^4.1.0"
+  }
+}
