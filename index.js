@@ -9,7 +9,7 @@ exports.register = function (server, options, next) {
     const payload = response.response._payload._data;
     const path = response.path;
 
-    const regex = /<[script|link][\w=\s\-\/"]+[href|src]="([\w\.\-_\/\?:]+)"[\w=\s\-\/"]*>/ig;
+    const regex = /<[img|script|link][\w=\s\-\/"]+[href|src]="([\w\.\-_\/\?:]+)"[\w=\s\-\/"]*>/ig;
     const foundLinks = [];
     let matches = null;
     while ((matches = regex.exec(payload)) !== null) {
